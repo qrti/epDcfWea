@@ -1,0 +1,32 @@
+DCF-Zeit und Wetter auf ePaper (Projekt von Kurt Schuster, qrt@qland.de, 190724)
+
+Kosten          40-50 ?
+Arbeitszeit     4-6 h
+Schwierigkeit   fortgeschritten (Programer, Programmierkenntnisse in C erforderlich)
+
+Es existieren zwei Platinenlayouts, eines für ATMEGA DIP-40 und eines für TQFP44. Bisher wurde das Projekt jedoch nur per Hand verdrahtet.
+
+Als ePaper kommt ein 2.9" großes Schwarz/Weiß Display von Waveshare, Modell 12956 zum Einsatz. Da Display und Ansteuerelektronik ein 'Sandwich' bilden, schneidet oder sägt man ein Stück Lochpunktraster, Hartpapier- oder Epoxyd-Platine, gleicher Größe und versieht es mit Montagelöchern in gleichen Abständen wie die Platine des ePaper. 
+
+Die Platine wird wie auf den Abbildungen zu sehen 'bestückt' und lt. Schaltplan verdrahtet.
+
+Als 433 MHz Empfänger Modul kann z. B. Reichelt DEBO RX 433 MHZ (gute Empfindlichkeit) oder Reichelt DEBO 433 RX/TX verwendet werden (weniger Empfindlichkeit). Mit etwas 0,6 mm Kupferlackdraht kann man sich eine passende Empfangsantenne selber biegen, z. B. 
+http://www.byvac.com/downloads/RLnn/How-to-make-a-Air-Cooled-433MHz-antenna.pdf
+Passende 433 MHz Coil-Antennen sind aber auch im Netz zu finden.
+
+Der fertige DCF-Empfänger mitsamt Antenne kann bei Reichelt unter DCF77 MODUL oder anderen Fachhändlern bezogen werden.
+
+Eine Bestell-Stückliste steht zur Verfügung, sie enthält DIP-40 und TQFP44 CPU, sowie beide 433 MHz Empfänger Varianten, bitte entsprechend wählen.
+https://www.reichelt.de/my/1607450
+
+Die 3D-Drucker Dateien für den Stand-Rahmen mit Kippgelenk sowie Empfänger-Trägerplatine sind im Github Projekt zu finden.
+
+
+Programmierung:
+
+Um den ATMEGA 1284 einfach und bequem mit der Arduino Benutzerumgebung zu programmieren, muss zuallererst ein passender Bootloader auf den ATMEGA geflasht werden. Dazu benötigt man einen passenden Programer, Anleitung nebst Bootloader und Dateien für die Arduino-IDE findet man auf https://github.com/MCUdude/MightyCore. Ist der Bootloader aufgespielt und die Arduino-IDE präpariert, kann der ATMEGA in den Sockel der verdrahteten Platine gesteckt werden. An den FTDI-Connector der Platine wird nun die FTDI-Serial-USB Adapter angesteckt und deren (Mini-)USB-Port mit dem USB-Anschluss eines PC verbunden. Dort wird der FTDI-Adapter automatisch als virtueller COM-Port eingerichtet und die Arduino-IDE ist nun in der Lage mit dem Bootloader des ATMEGA Daten auszutauschen, also auch eigene Programme aufzuspielen. Ein selber gestricktes Arduino Board ist so entstanden.
+
+Eine (Google) Suche nach 'FTDI Adapter FT232RL USB TTL Serial' sollte eine Auswahl an Bezugsmöglichkeiten dieses günstigen Adapters erbringen.
+
+Die Projektsoftware kann beim Autor bezogen werden. Derzeit werden zwei externe Wetterstation Sensoren unterstützt, S3318 und GJ1061. Prinzipiell lässt sich die Software an alle Sensoren auf Pulse-Position-Modulation (PPM) Basis anpassen. Die entsprechenden Änderungen werden in den Dateien wea.h und wea.c durchgeführt. Einstellungen für das DCF-Modul erfolgen in den Dateien dcf.h und dcf.c, wichtig ist vor allem die Signallogik des Moduls, sie kann positiv oder negativ (invertiert) sein. Der Sourcecode ist gut dokumentiert. Anregung für Timing und Decoding verschiedener Wetterstation Sensoren findet man unter https://github.com/merbanan/rtl_433/tree/master/src/devices. 
+

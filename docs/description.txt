@@ -1,0 +1,13 @@
+DCF-Zeit und Wetter auf ePaper (Projekt von Kurt Schuster, qrt@qland.de, 190620)
+
+Ist ein ePaper der aktuellen Generation schnell genug sekundengenau die Zeit anzuzeigen? Ja! Hervorragende Ablesbarkeit und geringer Stromverbrauch bei kleinen Anschaffungskosten standen bei diesem Projekt im Vordergrund. 
+
+Aber nicht nur die genaue DCF-Zeit, Wochentags- und Datumsanzeige oder Kalenderwoche- und Jahrestag-Anzeige werden angezeigt, die obere Zeile des Displays kann per Knopfdruck auch für bis zu drei durchschaltbare externe Temperatur- und Feuchtigkeitssensoren verwendet werden.
+
+Für Temperatur- und Feuchtigkeits-Änderungen wurde eine 11-stufige Tendenzanzeige implementiert. Bei Funkempfang eines Sensors wird statt der Sensor-Nummer kurz ein Stern angezeigt, werden länger als 4 Minuten keine Sensordaten empfangen, blinkt die Sensor-Nummer. Der DCF-Empfang wird mit einer LED signalisiert. Ebenso mit an Bord sind drei wählbare Schriftarten. Die Bedienung erfolgt über zwei Knöpfe oben am Gerät. Trotz des weiten Ablesewinkels, lässt sich das Display kippen, Rahmen und Gelenk wurden aus PLA gedruckt. Als Antennen und Empfänger für DCF und 433 MHz kommen günstige Standard-Module zum Einsatz, die zwecks besserem Empfang mit etwas Abstand zur Anzeigeeinheit auf einen PLA Träger montiert wurden.
+
+Als CPU wurde eine ATMEGA 1284 verwendet, diese hat ausreichend SRAM um das ePaper ohne komplizierte Segmentierung in einem Rutsch via SPI zu beschreiben. Entwickelt und programmiert wurde mit der Arduino Benutzerumgebung, als Bootloader dient dabei der auf Github zur Verfügung stehende 'MightyCore'.
+
+Die DCF-Routinen, sowie die Decoder für die externen Sensoren sind komplett selber entwickelt. Bisher kennt das Projekt zwei verschiedene externe Sensortypen auf 433 MHz Basis. Der Quellcode ist jedoch gut dokumentiert, sodass bei Bedarf auch weitere Sensoren eingebunden werden können.
+
+Um die Lebensdauer des ePaper zu gewährleisten, führt das Programm alle 256 Sekunden einen kompletten Refresh des Displays aus. Die Anzeige des Autors läuft sein mehreren Monaten im Dauerbetrieb ohne dass sich die Anzeigequalität geändert hat. 

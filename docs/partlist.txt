@@ -1,0 +1,57 @@
+Stückliste 
+https://www.reichelt.de/my/1607450
+(ATMEGA Typ und 433 MHz Empfänger auswählen)
+
+R1       470              R-EU_R0805       R0805  
+R2       10k              R-EU_R0805       R0805  
+
+C1       22p              C-EUC0805        C0805  
+C2       22p              C-EUC0805        C0805  
+C3       100u             CPOL-EUE2-4      E2-4   
+C4       100n             C-EUC0805        C0805  
+C5       100n             C-EUC0805        C0805  
+
+IC1      ATMEGA 1284P-PU                   DIL40  
+         + Sockel 40 Pol        
+         oder
+         ATMEGA 1284P-AU                   TQFP44
+
+Q1       16MHz            CRYSTALHC49U-V   HC49U-V
+LED1     red              LED3MM           LED3MM 
+
+JP1      FTDI             PINHD-1X6        1X06   
+JP2      Display          PINHD-1X8        1X08   
+JP3      ICP              PINHD-1X6        1X06   
+JP4      Power 5V         PINHD-1X2        1X02   
+JP5      DCF              PINHD-1X3        1X03   
+JP6      Wea              PINHD-1X3        1X03   
+JP7      SW1              PINHD-1X2        1X02   
+JP8      SW2              PINHD-1X2        1X02   
+
+Empfänger 433 MHz         DEBO 433 RX/TX   (günstig)
+                          oder
+                          DEBO RX 433 MHZ  (empfindlich)
+
+Display Waveshare DEBO EPA 2.9, schwarz/weiß
+Empfänger DCF
+Kurzhubtaster x2         
+Netzteil 5 V
+Antenne 433 MHz (selbst gewickelt)
+
+falls DCF-Empfänger mit 3,3 V 
+D1       ZPD3.3           ZENER-DIODEZD-10 ZDIO-10 
+R3       270              R-EU_R0805       R0805   
+C6       1u               CPOL-EUE2-4      E2-4    
+
+falls Drucktaster prellen
+C7       47n              C-EUC0805        C0805   
+C8       47n              C-EUC0805        C0805   
+
+unbestückt (reserviert fÃ¼r weiteres Projekt)
+R4       Option           R-EU_R0805       R0805   
+R5       Option           R-EU_R0805       R0805   
+C9       Option           C-EUC0805        C0805   
+
+Lötbrücken                                          voreingestellt
+SJ1      DCF Power        SJ2W             SJ_2     5 V
+SJ2      INT2/AC          SJ2W             SJ_2     INT2 
