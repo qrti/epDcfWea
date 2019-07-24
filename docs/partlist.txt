@@ -34,9 +34,14 @@ Empfänger 433 MHz         DEBO 433 RX/TX   (günstig)
 
 Display Waveshare DEBO EPA 2.9, schwarz/weiß
 Empfänger DCF
-Kurzhubtaster x2         
-Netzteil 5 V
-Antenne 433 MHz (selbst gewickelt)
+Netzteil 5 V stabilisiert
+Kurzhubtaster               x2         
+Antenne 433 MHz                            (selbst gewickelt)
+Schrauben       M3 x 18     x4
+Schrauben       M3 x 10     x2
+Muttern         M3          x6
+Beilagscheibe   M3 x 7      x8
+Distanzröllchen 12 x 7      x4             (oder siehe 3D Druck Rahmen)
 
 falls DCF-Empfänger mit 3,3 V 
 D1       ZPD3.3           ZENER-DIODEZD-10 ZDIO-10 
