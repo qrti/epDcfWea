@@ -57,10 +57,10 @@ public:
 	static volatile uint8_t status;		// DCF status
 	static volatile uint32_t secs;		// seconds since 01.01.2000 or since first sync
 
-	static void receive(uint8_t, uint8_t, bool);
+	static void receive(uint8_t, bool);
 	static bool valid();
 	static uint32_t secsMup(uint8_t);
-	static void setLogPul(uint8_t, uint8_t);
+	static void setLogic(uint8_t);
 
 #if USE_DATETIME
 	static DateTimeDcf now();
@@ -110,15 +110,17 @@ private:
 	// static uint8_t parity(uint8_t b);
 };
 
-//#define BINPAT "%c%c%c%c%c%c%c%c"
-//#define TOBIN(b)	(b & 0x80 ? '1' : '0'),	\
-//				    (b & 0x40 ? '1' : '0'),	\
-//					(b & 0x20 ? '1' : '0'), \ 
-//					(b & 0x10 ? '1' : '0'), \
-//				    (b & 0x08 ? '1' : '0'), \
-//				    (b & 0x04 ? '1' : '0'), \
-//				    (b & 0x02 ? '1' : '0'), \
-//				    (b & 0x01 ? '1' : '0')
+/*
+#define BINPAT "%c%c%c%c%c%c%c%c"
+#define TOBIN(b)	(b & 0x80 ? '1' : '0'),	\
+				    (b & 0x40 ? '1' : '0'),	\
+					(b & 0x20 ? '1' : '0'), \ 
+					(b & 0x10 ? '1' : '0'), \
+				    (b & 0x08 ? '1' : '0'), \
+				    (b & 0x04 ? '1' : '0'), \
+				    (b & 0x02 ? '1' : '0'), \
+				    (b & 0x01 ? '1' : '0')
+*/
 
 //
 // char buff[32];

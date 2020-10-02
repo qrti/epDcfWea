@@ -1,4 +1,4 @@
-// dcf V1.5 190704 qrt@qland.de
+// dcf V1.6 200930 qrt@qland.de
 //
 // V0.1     initial version
 // V0.3     automatic sec corrections
@@ -10,6 +10,7 @@
 // V1.3		arduino version
 // V1.4		ATMEGA 1284 timer 3 adaption, secs counter
 // V1.5		polarity setting
+// V1.6     discarded DCF pullup setting
 
 #include "Dcf.h"
 
@@ -52,12 +53,13 @@ uint8_t Dcf::logic;
 const int PIN_DCF  = 10;									// DCF input pin
 const int PIN_SLED = 24;									// status LED, PA0 minimal ATMEGA board default
 
-void Dcf::receive(uint8_t l, uint8_t p, bool waitValid)
+void Dcf::receive(uint8_t l, bool waitValid)
 {
-    pinMode(PIN_SLED, OUTPUT);
+    pinMode(PIN_SLED, OUTPUT);                             
     digitalWrite(PIN_SLED, LED_OFF);
+    pinMode(PIN_DCF, INPUT);		                        // if DCF module needs a pullup, realize it to Vcc of module                                                          // to realize it here might parasitic supply 3.3 V DCF modules
 
-	setLogPul(l, p);
+    logic = l;                                              // set DCF logic
 
 #if USE_KEYS
     Timer3.attachInterrupt(service, 10000L);				// 10 ms service   
@@ -80,12 +82,6 @@ bool Dcf::valid()
 uint32_t Dcf::secsMup(uint8_t m)
 {
 	return secs + (m - secs % m);
-}
-
-void Dcf::setLogPul(uint8_t l, uint8_t p)
-{
-	logic = l;
-	pinMode(PIN_DCF, p ? INPUT_PULLUP : INPUT);		// 0 no pullup, 1 pullup
 }
 
 void Dcf::service()

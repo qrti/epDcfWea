@@ -35,7 +35,7 @@ DateTimeDcf::DateTimeDcf(uint32_t t)
 	for(yOff=0;; ++yOff){
         leap = yOff % 4 == 0;
         
-		if(days < 365 + leap)
+		if(days < (uint16_t)365 + leap)
             break;
         
 		days -= 365 + leap;

@@ -75,8 +75,8 @@ void Text::drawChar(const uint8_t* p, int16_t x0, int16_t y0, uint8_t cWidth, ui
     const uint8_t* ctp = p + COMBYTES;								// compress table pointer
     uint8_t cts = 0;												//                shift counter
 
-    uint16_t ucl = cWidth * (fHeight+7 >> 3);						// uncomp data length
-    const uint8_t* utp = ctp + (ucl+COMBYTES >> COMBITS);			//        table pointer
+    uint16_t ucl = cWidth * ((fHeight+7) >> 3);						// uncomp data length
+    const uint8_t* utp = ctp + ((ucl+COMBYTES) >> COMBITS);			//        table pointer
 
     for(uint8_t y=0; y<fHeight; y+=8){								// char height in byte pieces
         for(uint8_t x=0; x<cWidth; x++){							// char width
